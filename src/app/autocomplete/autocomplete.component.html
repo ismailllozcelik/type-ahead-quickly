@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 type-ahead">
+        <div
+          class="d-flex justify-content-start p-3"
+          [ngStyle]="{ 'background-color': searchAreaBgColor }"
+        >
+          <em class="fa fa-search" [ngStyle]="{ color: 'gray' }"></em>
+          <input
+            type="text"
+            id="search"
+            name="search"
+            class="w-75"
+            [(ngModel)]="searching"
+            placeholder="SEARCH (Client Name / Policy Number)"
+          />
+        </div>
+        <ng-container *ngIf="searching.length > 0">
+          <div
+            class="filtered-customers"
+            [ngStyle]="{ border: '5px solid ' + searchAreaBgColor }"
+          >
+            <div
+              class="p-2 customer"
+              *ngFor="
+                let customer of customers
+                  | generalKeyValueFilter: searching:'name'
+              "
+            >
+              <h3>{{ customer.name }}</h3>
+              <div class="row">
+                <div class="col-3">
+                  <em class="fa fa-phone"></em>
+                  <span> {{ customer.phoneNumber }}</span>
+                </div>
+                <div class="col-3">
+                  <em class="fa fa-at"></em>
+                  <span> {{ customer.mail }}</span>
+                </div>
+                <div class="col-6">
+                  <em class="fa fa-file"></em>
+                  <span> Policy no. {{ customer.policyNo }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  

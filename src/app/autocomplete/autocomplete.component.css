@@ -1,0 +1,41 @@
+
+input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid gray;
+    font-size: 16px;
+    padding-bottom: 2px;
+    color: #fff;
+  }
+  
+  input:focus {
+      outline: none;
+  }
+  
+  input[type=text] {
+    background-color: transparent;
+    width: 100%;
+  }
+  
+  .filtered-customers {
+      animation: growDown 300ms ease-in-out forwards ;
+      transform-origin: top-center;
+  }
+  
+  .customer:hover {
+      cursor: pointer;
+      background-color: #f2f2f2;
+      transition: 0.4s;
+  }
+  
+  @keyframes growDown {
+      0% {
+        transform: scaleY(0)
+      }
+      80% {
+        transform: scaleY(1.1)
+      }
+      100% {
+        transform: scaleY(1)
+      }
+    }
